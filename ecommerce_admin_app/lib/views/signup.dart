@@ -84,7 +84,7 @@ class _SingupPageState extends State<SingupPage> {
                                 .then((value) {
                               if (value == "Account Created") {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text("Account Created")));
+                                    SnackBar(content: Text("Se ha creado una nueva cuenta")));
                                 Navigator.restorablePushNamedAndRemoveUntil(context, "/home" , (route) => false);
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(

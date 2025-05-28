@@ -93,11 +93,11 @@ class _LoginPageState extends State<LoginPage> {
                         }
                        await AuthService().resetPassword(_emailController.text).then( (value) {
                         if(value=="Mail Sent"){
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Enlace de restablecimiento de contraseña enviado a su correo electrónico")));
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("El enlace de restablecimiento de contraseña enviado a su correo electrónico")));
                           Navigator.pop(context);
                         }
                         else{
-ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(value,style: TextStyle( color:  Colors.white),), backgroundColor: Colors.red.shade400,));
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(value,style: TextStyle( color:  Colors.white),), backgroundColor: Colors.red.shade400,));
                         }
                         });
                       }, child: Text("Enviar")),
@@ -124,7 +124,7 @@ ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(value,style: T
                               .then((value) {
                             if (value == "Login Successful") {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text("Login Successful")));
+                                  SnackBar(content: Text("se ha iniciado Sesión")));
                              Navigator.restorablePushNamedAndRemoveUntil(context, "/home" , (route) => false);
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
