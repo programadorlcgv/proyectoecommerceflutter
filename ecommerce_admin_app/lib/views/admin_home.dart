@@ -1,5 +1,6 @@
 import 'package:ecommerce_admin_app/containers/dashboard_text.dart';
 import 'package:ecommerce_admin_app/containers/home_button.dart';
+import 'package:ecommerce_admin_app/controllers/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class AdminHome extends StatefulWidget {
@@ -15,50 +16,58 @@ class _AdminHomeState extends State<AdminHome> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Panel de Administración"),
+        actions: [
+          IconButton(onPressed: (){
+            AuthService().logout();
+            Navigator.pushNamedAndRemoveUntil(context, "/login", (route) => false);
+          }, icon: Icon(Icons.logout))
+        ],
       ),
-    body: Column(
-      children: [
-        Container(
-          height: 235,
-          padding: EdgeInsets.all(12),
-          margin: EdgeInsets.only(left: 10,right: 10,bottom: 10),
-          decoration: BoxDecoration(color: Colors.grey.shade200, borderRadius: BorderRadius.circular(10)),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              DashboardText(keyword: "Total de Productos ", value: "Por definir"),
-              DashboardText(keyword: "Total de Productos ", value: "Por definir"),
-              DashboardText(keyword: "Total de Productos ", value: "Por definir"),
-              DashboardText(keyword: "Total de Productos ", value: "Por definir"),
-              DashboardText(keyword: "Total de Productos ", value: "Por definir"),
-
-            ],
-          )
+    body: SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            height: 235,
+            padding: EdgeInsets.all(12),
+            margin: EdgeInsets.only(left: 10,right: 10,bottom: 10),
+            decoration: BoxDecoration(color: Colors.grey.shade200, borderRadius: BorderRadius.circular(10)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                DashboardText(keyword: "Total de Productos ", value: "Por definir"),
+                DashboardText(keyword: "Total de Productos ", value: "Por definir"),
+                DashboardText(keyword: "Total de Productos ", value: "Por definir"),
+                DashboardText(keyword: "Total de Productos ", value: "Por definir"),
+                DashboardText(keyword: "Total de Productos ", value: "Por definir"),
+      
+              ],
+            )
+          ),
+        // Buttones para admins
+        Row(
+          children: [
+            HomeButton(name: "Ordenes", onTap: () {}),
+            HomeButton(name: "Productos", onTap: () {}),
+      
+          ],
         ),
-      // Buttones para admins
-      Row(
-        children: [
-          HomeButton(name: "Ordenes", onTap: () {}),
-          HomeButton(name: "Productos", onTap: () {}),
-
+        Row(
+          children: [
+            HomeButton(name: "Promos", onTap: () {}),
+            HomeButton(name: "Banners", onTap: () {}),
+      
+          ],
+        ),
+        Row(
+          children: [
+            HomeButton(name: "Categorías", onTap: () {}),
+            HomeButton(name: "Cupones", onTap: () {}),
+      
+          ],
+        ),
         ],
       ),
-      Row(
-        children: [
-          HomeButton(name: "Promos", onTap: () {}),
-          HomeButton(name: "Banners", onTap: () {}),
-
-        ],
-      ),
-      Row(
-        children: [
-          HomeButton(name: "Categorías", onTap: () {}),
-          HomeButton(name: "Cupones", onTap: () {}),
-
-        ],
-      ),
-      ],
     ),
     );
   }
