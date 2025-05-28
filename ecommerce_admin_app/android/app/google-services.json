@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1040092966787",
+    "project_id": "ecommerce-ropa-157cf",
+    "storage_bucket": "ecommerce-ropa-157cf.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040092966787:android:8e0c27c21a06cffabfd0b6",
+        "android_client_info": {
+          "package_name": "com.example.ecommerce_admin_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHDSRuAR4POSU1xcsNHCS42v3tHR-ROIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040092966787:android:704fe02f4200341dbfd0b6",
+        "android_client_info": {
+          "package_name": "com.example.ecommerce_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHDSRuAR4POSU1xcsNHCS42v3tHR-ROIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
