@@ -1,6 +1,7 @@
 import 'package:ecommerce_admin_app/firebase_options.dart';
 import 'package:ecommerce_admin_app/views/admin_home.dart';
 import 'package:ecommerce_admin_app/views/login.dart';
+import 'package:ecommerce_admin_app/views/signup.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,9 @@ class MyApp extends StatelessWidget {
       title: 'Administracion de la tienda',
       routes: {
       "/": (context) => LoginPage(),
-      "/login": (context) => LoginPage()
+      "/home": (context) => AdminHome(),
+      "/login": (context) => LoginPage(),
+      "/signup": (context) => SingupPage()
       }
     );
   }
