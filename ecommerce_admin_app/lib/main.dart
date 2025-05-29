@@ -1,10 +1,13 @@
 import 'package:ecommerce_admin_app/controllers/auth_service.dart';
 import 'package:ecommerce_admin_app/firebase_options.dart';
+import 'package:ecommerce_admin_app/providers/admin_provider.dart';
 import 'package:ecommerce_admin_app/views/admin_home.dart';
+import 'package:ecommerce_admin_app/views/categories_page.dart';
 import 'package:ecommerce_admin_app/views/login.dart';
 import 'package:ecommerce_admin_app/views/signup.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,15 +22,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Administracion de la tienda',
-      routes: {
-      "/": (context) => CheckUser(),
-      "/home": (context) => AdminHome(),
-      "/login": (context) => LoginPage(),
-      "/signup": (context) => SingupPage()
-      }
+    return ChangeNotifierProvider(
+      create: (context) => AdminProvider(),
+      builder: (context, child ) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'App de la administracion de la tienda',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        routes: {
+        "/": (context) => CheckUser(),
+        "/home": (context) => AdminHome(),
+        "/login": (context) => LoginPage(),
+        "/signup": (context) => SingupPage(),
+        "/category": (context) => CategoriesPage(),
+        }
+      ),
     );
   }
 }
