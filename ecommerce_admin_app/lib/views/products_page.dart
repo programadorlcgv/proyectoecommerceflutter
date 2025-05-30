@@ -45,7 +45,9 @@ class _ProductsPageState extends State<ProductsPage> {
                     })
                       );
                     }, child: Text("Eliminar producto")),
-                    TextButton(onPressed: (){}, child: Text("Editar Producto")),
+                    TextButton(onPressed: (){
+                      Navigator.pushNamed(context,"/add_product", arguments: products[index]);
+                    }, child: Text("Editar Producto")),
                   ],
                 ));
               },
@@ -57,7 +59,11 @@ class _ProductsPageState extends State<ProductsPage> {
                 mainAxisAlignment:  MainAxisAlignment.spaceBetween,
                 children: [
                   Text("\$ ${products[index].new_price.toString()} "),
-                  Container(padding: EdgeInsets.all(4), color: Theme.of(context).primaryColor,child: Text(products[index].category.toUpperCase(),style: TextStyle(color: Colors.white),))
+                  Container(
+                    padding: EdgeInsets.all(4), 
+                    color: Theme.of(context).primaryColor,
+                    child: Text(products[index].category.toUpperCase(),
+                    style: TextStyle(color: Colors.white),))
                 ],
               ),
               trailing:  IconButton(icon: Icon(Icons.edit_outlined), onPressed: (){

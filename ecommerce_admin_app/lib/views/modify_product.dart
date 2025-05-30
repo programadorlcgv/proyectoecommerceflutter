@@ -120,7 +120,7 @@ class _ModifyProductState extends State<ModifyProduct> {
                   controller: quantityController,
                   validator: (v) => v!.isEmpty ? "Esto no puede estar vacío." : null,
                   decoration: InputDecoration(
-                      hintText: "Cantidad restante",
+                      hintText: "Escribe el numero de Cantidad restante en Stock",
                       label: Text("Cantidad restante"),
                       fillColor: Colors.deepPurple.shade50,
                       filled: true),
@@ -261,7 +261,9 @@ class _ModifyProductState extends State<ModifyProduct> {
                         },
                         child: Text(productId.isNotEmpty
                             ? "Actualizar producto"
-                            : "Agregar producto")))
+                            : "Agregar producto")
+                            )
+                          )
               ],
             ),
           ),

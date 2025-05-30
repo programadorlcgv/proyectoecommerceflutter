@@ -7,6 +7,7 @@ import 'package:ecommerce_admin_app/views/login.dart';
 import 'package:ecommerce_admin_app/views/modify_product.dart';
 import 'package:ecommerce_admin_app/views/products_page.dart';
 import 'package:ecommerce_admin_app/views/signup.dart';
+import 'package:ecommerce_admin_app/views/view_product.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         "/category": (context) => CategoriesPage(),
         "/products": (context) => ProductsPage(),
         "/add_product": (context) => ModifyProduct(),
+        "/view_product": (context) => ViewProduct(),
         }
       ),
     );
