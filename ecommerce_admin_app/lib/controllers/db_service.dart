@@ -63,6 +63,43 @@ class DbService {
         .delete();
   }
 
+  // PROMOS & BANNERS
+  // read promos from database
+  Stream<QuerySnapshot> readPromos(bool isPromo) {
+    print("reading $isPromo");
+    return FirebaseFirestore.instance
+        .collection(isPromo ? "shop_promos" : "shop_banners")
+        .snapshots();
+  }
+
+  // create new promo or banner
+  Future createPromos(
+      {required Map<String, dynamic> data, required bool isPromo}) async {
+    await FirebaseFirestore.instance
+        .collection(isPromo ? "shop_promos" : "shop_banners")
+        .add(data);
+  }
+
+  // update promo or banner
+  Future updatePromos(
+      {required Map<String, dynamic> data,
+      required bool isPromo,
+      required String id}) async {
+    await FirebaseFirestore.instance
+        .collection(isPromo ? "shop_promos" : "shop_banners")
+        .doc(id)
+        .update(data);
+  }
+
+  // delete promo or banner
+  Future deletePromos({required bool isPromo, required String id}) async {
+    await FirebaseFirestore.instance
+        .collection(isPromo ? "shop_promos" : "shop_banners")
+        .doc(id)
+        .delete();
+  }
+
+
 
   
 }
