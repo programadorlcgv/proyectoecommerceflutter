@@ -100,6 +100,34 @@ class DbService {
   }
 
 
+  // DISCOUNT AND COUPON CODE
+  // read coupon code from database
+  Stream<QuerySnapshot> readCouponCode() {
+    return FirebaseFirestore.instance.collection("shop_coupons").snapshots();
+  }
+
+  // create new coupon code
+  Future createCouponCode({required Map<String, dynamic> data}) async {
+    await FirebaseFirestore.instance.collection("shop_coupons").add(data);
+  }
+
+  // update coupon code
+  Future updateCouponCode(
+      {required String docId, required Map<String, dynamic> data}) async {
+    await FirebaseFirestore.instance
+        .collection("shop_coupons")
+        .doc(docId)
+        .update(data);
+  }
+
+  // delete coupon code
+  Future deleteCouponCode({required String docId}) async {
+    await FirebaseFirestore.instance
+        .collection("shop_coupons")
+        .doc(docId)
+        .delete();
+  }
+
 
   
 }
