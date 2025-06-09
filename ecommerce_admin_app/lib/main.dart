@@ -3,6 +3,7 @@ import 'package:ecommerce_admin_app/firebase_options.dart';
 import 'package:ecommerce_admin_app/providers/admin_provider.dart';
 import 'package:ecommerce_admin_app/views/admin_home.dart';
 import 'package:ecommerce_admin_app/views/categories_page.dart';
+import 'package:ecommerce_admin_app/views/coupons.dart';
 import 'package:ecommerce_admin_app/views/login.dart';
 import 'package:ecommerce_admin_app/views/modify_product.dart';
 import 'package:ecommerce_admin_app/views/modify_promo.dart';
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
         "/view_product": (context) => ViewProduct(),
         "/promos": (context) => PromoBannersPage(),
         "/update_promo": (context) => ModifyPromo(),
+        "/coupons": (context) => CouponsPage(),
         }
       ),
     );
