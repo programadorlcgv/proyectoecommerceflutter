@@ -4,10 +4,13 @@ import 'package:provider/provider.dart';
 import 'package:usuarios_tienda/controllers/auth_service.dart';
 import 'package:usuarios_tienda/firebase_options.dart';
 import 'package:usuarios_tienda/providers/user_provider.dart';
+import 'package:usuarios_tienda/views/discount_page.dart';
 import 'package:usuarios_tienda/views/home_nav.dart';
 import 'package:usuarios_tienda/views/login.dart';
 import 'package:usuarios_tienda/views/signup.dart';
+import 'package:usuarios_tienda/views/specific_products.dart';
 import 'package:usuarios_tienda/views/update_profile.dart';
+import 'package:usuarios_tienda/views/view_product.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +31,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) =>  UserProvider(),),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Tienda Usuarios',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
@@ -38,6 +42,9 @@ class MyApp extends StatelessWidget {
           "/login": (context) => LoginPage(),
           "/signup": (context) => SingupPage(),
           "/update_profile":(context)=> UpdateProfile(),
+          "/discount": (context)=> DiscountPage(),
+          "/specific": (context)=> SpecificProducts(),
+          "/view_product":(context)=> ViewProduct(),
         },
       ),
     );
