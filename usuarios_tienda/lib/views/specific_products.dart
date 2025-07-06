@@ -76,15 +76,19 @@ class _SpecificProductsState extends State<SpecificProducts> {
                             SizedBox(
                               height: 2,
                             ),
-                            Row(
+                            Column(
                               children: [
                                  SizedBox(width: 2,),
+                          Row(
+                            
+                            children: [
                           Text("\$${product.old_price}",style:  TextStyle(fontSize: 13,fontWeight: FontWeight.w500, decoration:  TextDecoration.lineThrough),),
                           SizedBox(width: 4,),
                           Text("\$${product.new_price}",style:  TextStyle(fontSize: 15,fontWeight: FontWeight.w600),),
                           SizedBox(width: 2,),
-                          Icon(Icons.arrow_downward,color: Colors.green, size: 14,),
-                                      Text("${discountPercent(product.old_price,product.new_price)}%",style:  TextStyle(fontSize: 16,fontWeight: FontWeight.bold,color: Colors.green),),
+                                      Text("-${discountPercent(product.old_price,product.new_price)}%",style:  TextStyle(fontSize: 12,fontWeight: FontWeight.bold,color: Colors.green),),
+                            ],
+                          )
                               ],
                             )
                           ],

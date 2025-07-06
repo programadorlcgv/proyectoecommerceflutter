@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:usuarios_tienda/containers/category_container.dart';
 import 'package:usuarios_tienda/containers/discount_container.dart';
+import 'package:usuarios_tienda/containers/home_page_maker_container.dart';
 import 'package:usuarios_tienda/containers/promo_container.dart';
 
 class HomePage extends StatefulWidget {
@@ -22,6 +23,8 @@ class _HomePageState extends State<HomePage> {
         PromoContainer(),
         DiscountContainer(),
         CategoryContainer(),
+
+        HomePageMakerContainer()
       ],),
     )
     );
