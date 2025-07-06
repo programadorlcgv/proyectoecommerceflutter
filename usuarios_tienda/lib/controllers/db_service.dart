@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:usuarios_tienda/models/cart_model.dart';
 
 class DbService {
   User? user = FirebaseAuth.instance.currentUser;
@@ -101,8 +102,41 @@ class DbService {
   // CART
   // display the user cart
 
+  Stream<QuerySnapshot> readUserCart() {
+    return FirebaseFirestore.instance
+        .collection("shop_users")
+        .doc(user!.uid)
+        .collection("cart")
+        .snapshots();
+  }
+
   // adding product to the cart
- 
+  Future addToCart({required CartModel cartData}) async {
+    try {
+      // update
+      await FirebaseFirestore.instance
+          .collection("shop_users")
+          .doc(user!.uid)
+          .collection("cart")
+          .doc(cartData.productId)
+          .update({
+        "product_id": cartData.productId,
+        "quantity": FieldValue.increment(1)
+      });
+    } on FirebaseException catch (e) {
+      print("firebase exception : ${e.code}");
+      if (e.code == "not-found") {
+        // insert
+        await FirebaseFirestore.instance
+            .collection("shop_users")
+            .doc(user!.uid)
+            .collection("cart")
+            .doc(cartData.productId)
+            .set({"product_id": cartData.productId, "quantity": 1});
+      }
+    }
+  }
+
   // delete specific product from cart
   Future deleteItemFromCart({required String productId}) async {
     await FirebaseFirestore.instance

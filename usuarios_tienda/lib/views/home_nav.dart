@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:usuarios_tienda/views/cart_page.dart';
 import 'package:usuarios_tienda/views/home.dart';
 import 'package:usuarios_tienda/views/profile.dart';
 
@@ -18,7 +19,7 @@ class _HomeNavState extends State<HomeNav> {
   List pages = [
     HomePage(),
     Text("Ordenes"),
-    Text("Carrito"),
+    CartPage(),
     ProfilePage()
   ];
   @override

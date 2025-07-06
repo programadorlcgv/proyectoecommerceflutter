@@ -1,9 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
 import 'package:usuarios_tienda/controllers/auth_service.dart';
 import 'package:usuarios_tienda/firebase_options.dart';
+import 'package:usuarios_tienda/providers/cart_provider.dart';
 import 'package:usuarios_tienda/providers/user_provider.dart';
+import 'package:usuarios_tienda/views/cart_page.dart';
+import 'package:usuarios_tienda/views/checkout_page.dart';
 import 'package:usuarios_tienda/views/discount_page.dart';
 import 'package:usuarios_tienda/views/home_nav.dart';
 import 'package:usuarios_tienda/views/login.dart';
@@ -17,6 +22,13 @@ void main() async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
 );
+
+await dotenv.load(fileName: ".env");
+  Stripe.publishableKey=dotenv.env["STRIPE_PUBLISH_KEY"]!;
+  Stripe.merchantIdentifier = 'merchant.flutter.stripe.test';
+  Stripe.urlScheme = 'flutterstripe';
+  await Stripe.instance.applySettings();
+
   runApp(const MyApp());
 }
 
@@ -29,6 +41,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) =>  UserProvider(),),
+        ChangeNotifierProvider(create: (context) =>  CartProvider(),),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -45,6 +58,8 @@ class MyApp extends StatelessWidget {
           "/discount": (context)=> DiscountPage(),
           "/specific": (context)=> SpecificProducts(),
           "/view_product":(context)=> ViewProduct(),
+          "/cart": (context)=> CartPage(),
+          "/checkout":(context)=> CheckoutPage(),
         },
       ),
     );

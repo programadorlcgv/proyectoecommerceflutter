@@ -1,7 +1,10 @@
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:usuarios_tienda/contants/discount.dart';
+import 'package:usuarios_tienda/models/cart_model.dart';
 import 'package:usuarios_tienda/models/products_model.dart';
+import 'package:usuarios_tienda/providers/cart_provider.dart';
 
 class ViewProduct extends StatefulWidget {
   const ViewProduct({super.key});
@@ -112,10 +115,15 @@ class _ViewProductState extends State<ViewProduct> {
 SizedBox(
   height: 60,width: MediaQuery.of(context).size.width*.5,
   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+            
+                      Provider.of<CartProvider>(context,listen: false).addToCart(CartModel(productId: arguments.id, quantity: 1));
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Añadido al carrito")));
+                    
+                    },
                     child: Text("Añadir al carrito"),
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).primaryColor,
+                        backgroundColor: Colors.blue.shade600,
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder()),
                   ),
@@ -127,7 +135,7 @@ SizedBox(
                     child: Text("Comprar ahora"),
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
-                        foregroundColor:  Theme.of(context).primaryColor,
+                        foregroundColor:  Colors.blue.shade600,
                         shape: RoundedRectangleBorder()),
                   ),
 ),
