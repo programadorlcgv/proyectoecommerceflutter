@@ -34,16 +34,16 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
           SizedBox(height: 20,),
-          ListTile(title: Text("Ordenes"), leading: Icon(Icons.local_shipping_outlined), onTap: ()async{
-      
+          ListTile(title: Text("Compras"), leading: Icon(Icons.local_shipping_outlined), onTap: ()async{
+            Navigator.pushNamed(context, "/orders");
       },),
       Divider( thickness: 1,  endIndent:  10, indent: 10,),
           ListTile(title: Text("Descuentos y Ofertas"), leading: Icon(Icons.discount_outlined), onTap: ()async{
-      
+            Navigator.pushNamed(context, "/discount");
       },),
       Divider( thickness: 1,  endIndent:  10, indent: 10,),
           ListTile(title: Text("Ayuda y Soporte"), leading: Icon(Icons.support_agent), onTap: ()async{
-      
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Envíenos un correo electrónico a pccomponenetes@shop.com")));
       },),
           Divider( thickness: 1,  endIndent:  10, indent: 10,),
           ListTile(title: Text("Cerrar Sesión"), leading: Icon(Icons.logout_outlined), onTap: ()async{

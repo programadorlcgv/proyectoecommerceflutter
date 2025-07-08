@@ -123,7 +123,7 @@ ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(value,style: T
                               .then((value) {
                             if (value == "Login Successful") {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text("Login Successful")));
+                                  SnackBar(content: Text("Inicio de sesión exitosa")));
                              Navigator.restorablePushNamedAndRemoveUntil(context, "/home" , (route) => false);
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(SnackBar(

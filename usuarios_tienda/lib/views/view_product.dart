@@ -21,6 +21,9 @@ class _ViewProductState extends State<ViewProduct> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Detalles del producto"),
+  scrolledUnderElevation: 0,
+  forceMaterialTransparency: true,
+
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -52,7 +55,7 @@ class _ViewProductState extends State<ViewProduct> {
                     children: [
                    
                       Text(
-                        "\$ ${arguments.old_price}",
+                        "\$${arguments.old_price}",
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
@@ -61,7 +64,7 @@ class _ViewProductState extends State<ViewProduct> {
                       ),
                       SizedBox(width: 10,),
                       Text(
-                        "\$ ${arguments.new_price}",
+                        "\$${arguments.new_price}",
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w800,
@@ -90,7 +93,7 @@ class _ViewProductState extends State<ViewProduct> {
                                 color: Colors.red),
                           )
                         : Text(
-                            "Solo quedan ${arguments.maxQuantity} en stock",
+                            "Sólo quedan ${arguments.maxQuantity} en stock",
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
@@ -110,16 +113,16 @@ class _ViewProductState extends State<ViewProduct> {
           ],
         ),
       ),
-      bottomNavigationBar:  Row(children: [
+      bottomNavigationBar: 
+      arguments.maxQuantity!=0?
+        Row(children: [
         
 SizedBox(
   height: 60,width: MediaQuery.of(context).size.width*.5,
   child: ElevatedButton(
                     onPressed: () {
-            
                       Provider.of<CartProvider>(context,listen: false).addToCart(CartModel(productId: arguments.id, quantity: 1));
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Añadido al carrito")));
-                    
                     },
                     child: Text("Añadir al carrito"),
                     style: ElevatedButton.styleFrom(
@@ -131,7 +134,10 @@ SizedBox(
 SizedBox(
   height: 60,width: MediaQuery.of(context).size.width*.5,
   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                       Provider.of<CartProvider>(context,listen: false).addToCart(CartModel(productId: arguments.id, quantity: 1));
+                       Navigator.pushNamed(context,"/checkout");
+                    },
                     child: Text("Comprar ahora"),
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
@@ -139,7 +145,7 @@ SizedBox(
                         shape: RoundedRectangleBorder()),
                   ),
 ),
-      ],),
+      ],): SizedBox(),
     );
   }
 }

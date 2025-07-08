@@ -12,6 +12,7 @@ import 'package:usuarios_tienda/views/checkout_page.dart';
 import 'package:usuarios_tienda/views/discount_page.dart';
 import 'package:usuarios_tienda/views/home_nav.dart';
 import 'package:usuarios_tienda/views/login.dart';
+import 'package:usuarios_tienda/views/orders_page.dart';
 import 'package:usuarios_tienda/views/signup.dart';
 import 'package:usuarios_tienda/views/specific_products.dart';
 import 'package:usuarios_tienda/views/update_profile.dart';
@@ -60,6 +61,8 @@ class MyApp extends StatelessWidget {
           "/view_product":(context)=> ViewProduct(),
           "/cart": (context)=> CartPage(),
           "/checkout":(context)=> CheckoutPage(),
+          "/orders":(context)=> OrdersPage(),
+          "/view_order":(context)=> ViewOrder(),
         },
       ),
     );

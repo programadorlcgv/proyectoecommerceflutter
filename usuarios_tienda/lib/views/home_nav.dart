@@ -1,7 +1,11 @@
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:usuarios_tienda/providers/cart_provider.dart';
+import 'package:usuarios_tienda/providers/user_provider.dart';
 import 'package:usuarios_tienda/views/cart_page.dart';
 import 'package:usuarios_tienda/views/home.dart';
+import 'package:usuarios_tienda/views/orders_page.dart';
 import 'package:usuarios_tienda/views/profile.dart';
 
 class HomeNav extends StatefulWidget {
@@ -13,12 +17,17 @@ class HomeNav extends StatefulWidget {
 
 class _HomeNavState extends State<HomeNav> {
 
+  @override
+  void initState() {
+    Provider.of<UserProvider>(context,listen: false);
+    super.initState();
+  }
 
   int selectedIndex = 0;
 
   List pages = [
     HomePage(),
-    Text("Ordenes"),
+    OrdersPage(),
     CartPage(),
     ProfilePage()
   ];
@@ -44,11 +53,21 @@ class _HomeNavState extends State<HomeNav> {
             ),
           BottomNavigationBarItem(
               icon: Icon(Icons.local_shipping_outlined),
-              label: 'Ordenes',
+              label: 'Compras',
             ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart_outlined),
-              label: 'Carrrito',
+              icon: Consumer<CartProvider>(
+                builder: (context, value, child) {
+                  if(value.carts.length>0){
+                    return Badge(label: Text(value.carts.length.toString()),
+                    child: Icon(Icons.shopping_cart_outlined),
+                    backgroundColor:  Colors.green.shade400,
+                    );
+                  }
+                  return Icon(Icons.shopping_cart_outlined);
+                },
+              ),
+              label: 'Carrito',
             ),
           BottomNavigationBarItem(
               icon: Icon(Icons.account_circle_outlined),
