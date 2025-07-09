@@ -5,6 +5,8 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
 import 'package:usuarios_tienda/contants/payment.dart';
 import 'package:usuarios_tienda/controllers/db_service.dart';
+import 'package:usuarios_tienda/controllers/mail_service.dart';
+import 'package:usuarios_tienda/models/orders_model.dart';
 import 'package:usuarios_tienda/providers/cart_provider.dart';
 import 'package:usuarios_tienda/providers/user_provider.dart';
 
@@ -304,9 +306,9 @@ Navigator.pop(context);
 }
 
 //submit email
-// if(paymentSuccess){
-//   MailService().sendMailFromGmail(user.email, OrdersModel.fromJson(dataOfOrder, ""));
-// }
+if(paymentSuccess){
+  MailService().sendMailFromGmail(user.email, OrdersModel.fromJson(dataOfOrder, ""));
+}
 
 
         },style: ElevatedButton.styleFrom(backgroundColor: Colors.blue,foregroundColor: Colors.white),),
