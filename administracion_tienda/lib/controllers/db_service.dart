@@ -32,7 +32,7 @@ class DbService {
         .delete();
   }
 
-   // PRODUCTS
+  // PRODUCTS
   // read products from database
   Stream<QuerySnapshot> readProducts() {
     return FirebaseFirestore.instance
@@ -99,7 +99,6 @@ class DbService {
         .delete();
   }
 
-
   // DISCOUNT AND COUPON CODE
   // read coupon code from database
   Stream<QuerySnapshot> readCouponCode() {
@@ -128,6 +127,21 @@ class DbService {
         .delete();
   }
 
+  // ORDERS
+  // read all the orders
+  Stream<QuerySnapshot> readOrders() {
+    return FirebaseFirestore.instance
+        .collection("shop_orders")
+        .orderBy("created_at", descending: true)
+        .snapshots();
+  }
 
-  
+    // update the status of order
+  Future updateOrderStatus(
+      {required String docId, required Map<String, dynamic> data}) async {
+    await FirebaseFirestore.instance
+        .collection("shop_orders")
+        .doc(docId)
+        .update(data);
+  }
 }

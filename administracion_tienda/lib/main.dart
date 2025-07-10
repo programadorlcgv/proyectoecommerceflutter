@@ -7,6 +7,7 @@ import 'package:ecommerce_admin_app/views/coupons.dart';
 import 'package:ecommerce_admin_app/views/login.dart';
 import 'package:ecommerce_admin_app/views/modify_product.dart';
 import 'package:ecommerce_admin_app/views/modify_promo.dart';
+import 'package:ecommerce_admin_app/views/orders_page.dart';
 import 'package:ecommerce_admin_app/views/products_page.dart';
 import 'package:ecommerce_admin_app/views/promo_banners_page.dart';
 import 'package:ecommerce_admin_app/views/signup.dart';
@@ -48,7 +49,9 @@ class MyApp extends StatelessWidget {
         "/view_product": (context) => ViewProduct(),
         "/promos": (context) => PromoBannersPage(),
         "/update_promo": (context) => ModifyPromo(),
-        "/coupons": (context) => CouponsPage(),
+        "/coupons": (context) => CouponsPage(),       
+        "/orders": (context) => OrdersPage(),
+        "/view_order": (context) => ViewOrder()
         }
       ),
     );
